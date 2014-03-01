@@ -2,11 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Test Calendar</title>
+  <title>comiCon</title>
   <!-- Bootstrap -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="css/calendar.css">
 </head>
 <body>
   <script type="text/x-handlebars">
@@ -16,32 +15,76 @@
       </header>
 
       <section id="container">
-			<ul>
-				<li>{{#link-to "marvel" }} Marvel  {{/link-to}}</li>
-				<li>DC</li>
-			</ul>
+			<div style="float:left;">
+				<ul>
+					<li>{{#link-to "marvel" }} Marvel  {{/link-to}}</li>
+					<li>{{#link-to "dc" }} DC {{/link-to}}</li>
+				</ul>
+			</div>
+			<div style="margin-left: 150px;"> {{outlet}} </div>
       </section>
-	  <footer id="footer">
-		<p class="text-left">Created by Nikhil Gumma</p>
-	  </footer>
     </section>
-
-	{{outlet}}
   </script>
 
 	<script type="text/x-handlebars" id="marvel">
-			<div> Here is where I add a list of marvel characters
+		<div> Welcome to Marvel </div>
+		<div style="float:left;">
+			<ul>
+				<li>{{#link-to "marvelheroes" }} Heroes {{/link-to}} </li>
+				<li> {{#link-to "marvelvillians" }} Villians {{/link-to}} </li>
+			</ul>		
+		</div>
+		<div style="margin-left: 150px;"> {{outlet}} </div>
 	</script>
 
-	<script type="text/x-handlebars" id="chars">
-	 <ul>
-	  {{#each}}
-		<li>
-		  {{name}}
-		</li>
-	  {{/each}}
-	</ul>
+	<script type="text/x-handlebars" id="dc">
+		<div> Welcome to DC </div>
+		<div style="float:left;"
+			<ul>
+				<li>{{#link-to "dcheroes" }}  Heroes {{/link-to}}</li>
+				<li>{{#link-to "dcvillians" }} Villians {{/link-to}} </li>
+			</ul>
+		</div>
+		<div style="margin-left: 150px;"> {{outlet}} </div>
     </script>
+
+	<script type="text/x-handlebars" id="marvelheroes">
+		<div> Marvel Hereos</div>
+		<ul>
+			<li>Hulk </li>
+			<li> SpiderMan</li>
+		</ul>
+		 <button type="button" class="btn btn-primary" style="text-decoration:none"> {{#link-to "marvelheroes.create" }} create {{/link-to}}</button>
+		{{outlet}}
+	</script>
+	
+	<script type="text/x-handlebars" id="marvelheroes.create">
+		<div>Create a Hero </div>
+	</script>
+
+	<script type="text/x-handlebars" id="marvelvillians">
+		<div> Marvel Villians</div>
+		<ul>
+			<li>Mandarin </li>
+			<li> Lizard </li>
+		</ul>
+	</script>
+
+	<script type="text/x-handlebars" id="dcheroes">
+		<div> DC Hereos</div>
+		<ul>
+			<li>Batman </li>
+			<li> Superman</li>
+		</ul>
+	</script>
+
+	<script type="text/x-handlebars" id="dcvillians">
+		<div> DC Villians</div>
+		<ul>
+			<li> Joker </li>
+			<li> Lex Luthor </li>
+		</ul>
+	</script>
 
 <!-- Imports --> 
 
