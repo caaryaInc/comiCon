@@ -4,99 +4,68 @@
   <meta charset="utf-8">
   <title>comiCon</title>
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
 </head>
 <body>
-  <script type="text/x-handlebars">
-	<section id="testcalendar" class="pagination-centered">
-      <header id="header">
-        <h3>Comicon</h3>
-      </header>
 
-      <section id="container">
-			<div style="float:left;">
-				<ul>
-					<li>{{#link-to "marvel" }} Marvel  {{/link-to}}</li>
-					<li>{{#link-to "dc" }} DC {{/link-to}}</li>
-				</ul>
-			</div>
-			<div style="margin-left: 150px;"> {{outlet}} </div>
-      </section>
-    </section>
-  </script>
+<script type="text/x-handlebars" data-template-name="application">
+  <div class="container">
+    <h1>Comicon</h1>
 
-	<script type="text/x-handlebars" id="marvel">
-		<div> Welcome to Marvel </div>
-		<div style="float:left;">
-			<ul>
-				<li>{{#link-to "marvelheroes" }} Heroes {{/link-to}} </li>
-				<li> {{#link-to "marvelvillians" }} Villians {{/link-to}} </li>
-			</ul>		
-		</div>
-		<div style="margin-left: 150px;"> {{outlet}} </div>
-	</script>
+    <ul class="nav nav-pills">
+      {{#each authors}}
+      <li>{{#link-to "author" this}} {{name}} {{/link-to}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{outlet}}
+</script>
 
-	<script type="text/x-handlebars" id="dc">
-		<div> Welcome to DC </div>
-		<div style="float:left;"
-			<ul>
-				<li>{{#link-to "dcheroes" }}  Heroes {{/link-to}}</li>
-				<li>{{#link-to "dcvillians" }} Villians {{/link-to}} </li>
-			</ul>
-		</div>
-		<div style="margin-left: 150px;"> {{outlet}} </div>
-    </script>
+<script type="text/x-handlebars" data-template-name="author">
+  <div class="container">
+    <h2>Author: {{name}}</h2>
 
-	<script type="text/x-handlebars" id="marvelheroes">
-		<div> Marvel Hereos</div>
-		<ul>
-			<li>Hulk </li>
-			<li> SpiderMan</li>
-		</ul>
-		 <button type="button" class="btn btn-primary" style="text-decoration:none"> {{#link-to "marvelheroes.create" }} create {{/link-to}}</button>
-		{{outlet}}
-	</script>
-	
-	<script type="text/x-handlebars" id="marvelheroes.create">
-		<div>Create a Hero </div>
-	</script>
+    <ul class="nav nav-pills">
+      {{#each categories}}
+      <li>{{#link-to "category" this}} {{name}} {{/link-to}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{outlet}}
+</script>
 
-	<script type="text/x-handlebars" id="marvelvillians">
-		<div> Marvel Villians</div>
-		<ul>
-			<li>Mandarin </li>
-			<li> Lizard </li>
-		</ul>
-	</script>
+<script type="text/x-handlebars" data-template-name="category">
+  <div class="container">
+    <h3>Category: {{name}}</h3>
+  </div>
+  {{outlet}}
+</script>
 
-	<script type="text/x-handlebars" id="dcheroes">
-		<div> DC Hereos</div>
-		<ul>
-			<li>Batman </li>
-			<li> Superman</li>
-		</ul>
-	</script>
+<script type="text/x-handlebars" data-template-name="heroes">
+  <div class="container">
+    <h4>Characters</h4>
 
-	<script type="text/x-handlebars" id="dcvillians">
-		<div> DC Villians</div>
-		<ul>
-			<li> Joker </li>
-			<li> Lex Luthor </li>
-		</ul>
-	</script>
+    <ul class="nav nav-pills">
+      {{#each}}
+      <li>{{#link-to "hero" this}} {{name}} {{/link-to}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</script>
 
-<!-- Imports --> 
 
-  <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-  <script src="//builds.emberjs.com/handlebars-1.0.0.js"></script>
-  <script src="js/libs/ember-1.4.0.js"></script>
-  <script src="//builds.emberjs.com/tags/v1.0.0-beta.3/ember-data.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<!-- Imports -->
 
-  <script src="js/app.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/router.js"></script>
-  <script src="js/models/chars.js"></script>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
+<script src="http://builds.emberjs.com.s3.amazonaws.com/beta/ember.js"></script>
+<script src="http://builds.emberjs.com.s3.amazonaws.com/beta/ember-data.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<script src="js/app.js"></script>
+<script src="js/store.js"></script>
+<script src="js/router.js"></script>
+<script src="js/models/chars.js"></script>
 </body>
 </html>
