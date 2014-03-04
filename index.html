@@ -6,6 +6,7 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -44,12 +45,60 @@
 
 <script type="text/x-handlebars" data-template-name="heroes">
   <div class="container">
-    <h4>Characters</h4>
+    <div class="left">
+    <button class="btn btn-primary"> {{#link-to "heroes.create"}}  Add Characters {{/link-to}}  </button>
+      <h4>Characters</h4>
+      <ul class="nav nav-pills">
+        {{#each}}
+        <li>{{#link-to "hero" this}} {{name}} {{/link-to}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="right">   {{outlet}}  </div>
+  </div>
+</script>
 
-    <ul class="nav nav-pills">
-      {{#each}}
-      <li>{{#link-to "hero" this}} {{name}} {{/link-to}}</li>
-      {{/each}}
+<script type="text/x-handlebars" data-template-name="hero">
+  <div class="container">
+    <div class="left">
+      <ul class="list-unstyled"> 
+        <li> <h3> {{name}} </h3> </li>
+        <li> Category : {{category}} </li>
+        <li> Author: {{author}} </li>
+        <li> Age: {{age}} </li>
+        <li> Type: {{type}} </li>
+      </ul>
+      <button class="btn btn-primary" {{ action edit }}>  edit  </button>
+      <button class="btn btn-primary" {{ action del }}> del </button>
+    </div>
+    <div class="right">  {{outlet}} </div>
+  </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="hero/edit">
+  <div class="left">
+    <ul class="list-unstyled">
+      <li>
+        <label>Name</label></br/>
+        {{input value=name}}
+      </li>
+      <li>
+        <label>Category</label></br/>
+        {{input value=category}}
+      </li>
+      <li>
+        <label>Author</label></br/>
+        {{input value=author}}
+      </li>
+      <li>  
+        <label>Age</label></br/>
+        {{input value=age}}
+      </li>
+      <li>
+        <label>Type</label></br/>
+        {{input value=type}}
+      </li>
+      <button class="btn btn-primary" {{action "save"}}> save </button>
     </ul>
   </div>
 </script>

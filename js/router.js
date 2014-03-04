@@ -72,3 +72,54 @@ App.HeroRoute = Ember.Route.extend({
   }
 });
 
+App.HeroController = Ember.ObjectController.extend({
+  actions: {
+    edit: function(){
+      this.transitionToRoute('hero.edit');
+    },
+    del: function(){
+      model = this.get('model');
+      model.deleteRecord();
+      model.save();
+      this.transitionToRoute('heroes');
+    }
+  }
+});
+
+App.HeroEditRoute = Ember.Route.extend({
+  model: function () {
+    return this.modelFor('hero');;
+  }
+});
+
+App.HeroEditController = Ember.ObjectController.extend({
+  actions: {
+    save: function(){
+      var hero = this.get('model');
+      hero.save();
+      this.transitionToRoute('hero', hero);
+    }
+  }
+});
+
+App.HeroesCreateRoute = Ember.Route.extend({
+  model: function(){
+    return Em.Object.create({});
+  },
+  renderTemplate: function(){
+    this.render('hero.edit', {
+      controller: 'heroesCreate'
+    });
+  }
+});
+
+App.HeroesCreateController = Ember.ObjectController.extend({
+  actions: {
+    save: function(){
+      var model = this.get('model');
+      var newentry = this.get('store').createRecord('char',model);
+      newentry.save();
+      this.transitionToRoute('hero', hero);
+    }
+  }
+});

@@ -1,0 +1,13 @@
+What are data attributes?
+binding element class names - very important
+
+http://emberjs.com/guides/templates/actions/
+When would we want to send it to a view and not to a controller ?
+
+Read more about rendering with helpers and writing helpers
+
+
+->this.resource - urls that represent a noun
+->this.route - urls that represent a verb or adjective
+
+
