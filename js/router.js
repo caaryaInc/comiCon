@@ -78,7 +78,7 @@ App.HeroController = Ember.ObjectController.extend({
       this.transitionToRoute('hero.edit');
     },
     del: function(){
-      model = this.get('model');
+      var model = this.get('model');
       model.deleteRecord();
       model.save();
       this.transitionToRoute('heroes');
@@ -88,7 +88,7 @@ App.HeroController = Ember.ObjectController.extend({
 
 App.HeroEditRoute = Ember.Route.extend({
   model: function () {
-    return this.modelFor('hero');;
+    return this.modelFor('hero');
   }
 });
 
@@ -119,7 +119,7 @@ App.HeroesCreateController = Ember.ObjectController.extend({
       var model = this.get('model');
       var newentry = this.get('store').createRecord('char',model);
       newentry.save();
-      this.transitionToRoute('hero', hero);
+      this.transitionToRoute('heroes');
     }
   }
 });
